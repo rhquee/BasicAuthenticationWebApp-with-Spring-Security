@@ -1,4 +1,4 @@
-package configuration.appconfiguration;
+package configuration;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
