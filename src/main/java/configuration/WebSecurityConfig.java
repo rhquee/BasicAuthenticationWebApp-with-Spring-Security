@@ -36,15 +36,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/css/*").permitAll()
-                .anyRequest().authenticated()
-
-                .and()
-                .formLogin()
-//                .loginPage("/login.html")
+                .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
+                .anyRequest().authenticated().and()
+                .formLogin().loginPage("/login").permitAll()
 //                .loginProcessingUrl("/login")
                 .successHandler(authenticationSuccessHandler())
-
                 .and()
-                .httpBasic();
+                .exceptionHandling().accessDeniedPage("/403");
+//                .httpBasic();
+
     }
 }
