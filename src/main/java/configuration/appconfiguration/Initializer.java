@@ -5,7 +5,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] {SpringRootConfig.class};
+        return new Class[] {SpringRootConfig.class, WebSecurityConfig.class};
     }
 
     protected Class<?>[] getServletConfigClasses() {
@@ -15,5 +15,5 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
     protected String[] getServletMappings() {
         return new String[] {"/"};
     }
-    
+
 }
