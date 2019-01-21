@@ -1,4 +1,4 @@
-package configuration;
+package configuration.securityconfiguration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;

@@ -1,6 +1,11 @@
 package configuration;
 
+import configuration.securityconfiguration.WebSecurityConfig;
+import configuration.session.SessionListener;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -16,4 +21,9 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
         return new String[] {"/"};
     }
 
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+        servletContext.addListener(new SessionListener());
+    }
 }

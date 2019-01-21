@@ -1,4 +1,4 @@
-package configuration;
+package configuration.securityconfiguration;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
@@ -12,4 +12,11 @@ public class SecurityWebApplicationInitializer extends AbstractSecurityWebApplic
      * - generowana jest domyślna strona logowania
      * - zapewnione jest zabezpieczenie przed atakami, np CSRF lub session-fixation
      */
+
+    @Override
+    protected boolean enableHttpSessionEventPublisher() {
+        return true;
+    } //domyślnie zwraca false (wyłlączone)
+    //podstawowy mechanizm działa - drugie logowanie na tego samego
+    //użytkownika jest zablokowane
 }
