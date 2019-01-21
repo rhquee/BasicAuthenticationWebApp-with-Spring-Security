@@ -21,4 +21,10 @@ public class LoginController {
         model.addAttribute("loginError", true);
         return "login";
     }
+
+    @RequestMapping("/login-expired")
+    public String loginExpired(Model model) {
+        model.addAttribute("sessionExpired", true);
+        return "login";
+    }
 }

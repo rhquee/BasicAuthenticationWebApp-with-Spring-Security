@@ -49,21 +49,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .formLogin()
                     .loginPage("/login").permitAll()
-                .failureUrl("/login-error")
+                    .failureUrl("/login-error")
                     .successHandler(authenticationSuccessHandler()).and()
-                .logout().permitAll().invalidateHttpSession(true).deleteCookies("JSESSIONID").and()
+
+                .logout().permitAll()
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID").and()
+
                 .exceptionHandling()
                     .authenticationEntryPoint(authenticationEntryPoint())
-//                    .accessDeniedPage("/403");
+                    .accessDeniedPage("/403").and()
 
-        .and()
-                .httpBasic()
-                .and()
-                .sessionManagement().maximumSessions(1) //rozpoznawanie po loginie
-        .maxSessionsPreventsLogin(false).expiredUrl("/login?logout") //true = niemożliwe jest zalogowanie się drugi raz
-        .sessionRegistry(sessionRegistry());
+                .httpBasic().and()
+                .sessionManagement()
+                    .maximumSessions(1) //rozpoznawanie po loginie
+                    .maxSessionsPreventsLogin(false)
+                    .expiredUrl("/login") //true = niemożliwe jest zalogowanie się drugi raz
+                .sessionRegistry(sessionRegistry()); //referencja do tego obiektu (do: logowanie się drugi raz)
     }
 
+    //mechanizm włączany w initializerze
     @Bean
     public SessionRegistry sessionRegistry(){
         return new SessionRegistryImpl();

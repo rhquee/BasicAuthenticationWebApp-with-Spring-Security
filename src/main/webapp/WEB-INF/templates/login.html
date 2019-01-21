@@ -3,13 +3,14 @@
 <!--<html xmlns:th="http://www.thymeleaf.org">-->
     <meta charset="UTF-8">
     <title>Zaloguj się do aplikacji</title>
-    <link rel="stylesheet" type="text/css" href="css/web.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/css/web.css" media="screen">
 </head>
 <body>
 
 <div class="container">
 
     <p th:if="${loginError}" class="error">Wrong user or password</p>
+    <p th:if="${sessionExpired}" class="error">Your session expired, please log in again</p>
 
     <form class="form-signin" name="loginForm" method="POST" action="/login">
         <h2 class="form-signin-heading">Zaloguj się za pomocą nazwy użytkownika i hasła</h2>
