@@ -14,17 +14,14 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class CustomAuthenticationSuccessHandlerTest {
+//public class CustomAuthenticationSuccessHandlerTest {
 
-    private HttpServletRequest httpServletRequest;
-    private HttpServletResponse httpServletResponse;
-    private Authentication authentication;
-//    HttpServletRequest httpServletRequest = mock(HttpServletRequest.class);
-//    HttpServletResponse httpServletResponse = mock(HttpServletResponse.class);
-//    Authentication authentication = mock(Authentication.class);
-
-    @Test
-    public void onAuthenticationSuccess() throws Exception {
+//    private HttpServletRequest httpServletRequest;
+//    private HttpServletResponse httpServletResponse;
+//    private Authentication authentication;
+//
+//    @Test
+//    public void onAuthenticationSuccess() throws Exception {
 //        Set<> roles = mock(Set.class);
 //        when(roles.contains("ROLE_ADMIN")).thenReturn(true);
 //
@@ -32,5 +29,5 @@ public class CustomAuthenticationSuccessHandlerTest {
 //        customAuthenticationSuccessHandler.onAuthenticationSuccess(httpServletRequest, httpServletResponse, authentication);
 //
 //        verify(httpServletResponse).sendRedirect("/admin");
-    }
-}
+//    }
+//}

@@ -16,23 +16,20 @@ public class LoginController {
 
     @GetMapping(value = "/login")
     private String showLoginPage(Model model, HttpServletRequest request) {
-        if(request.getAttribute("user") != null && request.getAttribute("user") != ""){
-            model.addAttribute("user", request.getRemoteUser());
-            return "index";
-        }
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        Object principal = authentication.getPrincipal();
-//        String login;
-//        if(principal instanceof UserDetails){
-//            login = ((UserDetails) principal).getUsername();
-//            System.out.println(login);
-//            model.addAttribute("user", login);
+//        if(request.getAttribute("user") != null && request.getAttribute("user") != ""){
+//            model.addAttribute("user", request.getRemoteUser());
 //            return "index";
 //        }
-//        model.addAttribute("user", login);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        String login;
+        if (principal instanceof UserDetails) {
+            login = ((UserDetails) principal).getUsername();
+            model.addAttribute("user", login);
+            return "index";
+        }
         return "login";
     }
-
     @RequestMapping("/login-error")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);
