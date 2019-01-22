@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders;
 import org.springframework.test.context.ContextConfiguration;
@@ -42,6 +43,9 @@ public class WebSecurityConfigTest {
 
     @Autowired
     private Filter springSecurityFilterChain;
+
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     @Before
     public void setup() {
@@ -81,6 +85,7 @@ public class WebSecurityConfigTest {
         mockMvc.perform(get("/index"))
                 .andExpect(status().is(302))
                 .andExpect(redirectedUrl("login"));
+
     }
 
     @Test
@@ -105,18 +110,28 @@ public class WebSecurityConfigTest {
     }
 
     @Test
-    public void configure_whenLoginWithValidUser_thenAuthenticationSuccess() throws Exception {
-        mockMvc
-                .perform(formLogin("/login").user("username", "Joe").password("joe"))
+    @WithMockUser
+    public void configure_whenLoginPage_ThenRedirectToIndex() throws Exception {
+        mockMvc.perform(get("/login"))
                 .andExpect(status().is(302))
-                .andExpect(redirectedUrl("index"))
-                .andExpect(authenticated().withUsername("Joe"));
+        .andExpect(redirectedUrl("/index"));
     }
 
     @Test
-    public void configure_whenLoginWithValidUser_thenAuthenticationFailed() throws Exception {
+    public void configure_whenLoginWithValidUser_thenAuthenticationSuccess() throws Exception {
+        UserDetails userDetails = userDetailsService.loadUserByUsername("joe");
         mockMvc
-                .perform(formLogin("/login"))
+                .perform(get("/").with(user(userDetails)))
+                .andExpect(status().isOk())
+                .andExpect(authenticated().withAuthenticationPrincipal(userDetails));
+
+    }
+
+    @Test //expected UsernameNotFoundException?
+    public void configure_whenLoginWithValidUser_thenAuthenticationFailed() throws Exception {
+        UserDetails userDetails = userDetailsService.loadUserByUsername("invalid");
+        mockMvc
+                .perform(formLogin().user(userDetails.getUsername()))
                 .andExpect(status().is(302))
                 .andExpect(redirectedUrl("login-error"))
                 .andExpect(unauthenticated());
