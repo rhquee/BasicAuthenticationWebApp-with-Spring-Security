@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder(); //encoder od springa 5
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();
         inMemoryUserDetailsManager.createUser(User.withUsername("joe").password(encoder.encode("joe")).roles("USER").build());
         inMemoryUserDetailsManager.createUser(User.withUsername("admin").password(encoder.encode("admin")).roles("ADMIN").build());

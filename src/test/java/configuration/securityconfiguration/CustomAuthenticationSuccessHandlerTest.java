@@ -29,7 +29,6 @@ public class CustomAuthenticationSuccessHandlerTest {
         Set<String> roles = new HashSet();
         roles.add("ROLE_ADMIN");
 
-
         CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler = new CustomAuthenticationSuccessHandler();
         customAuthenticationSuccessHandler.onAuthenticationSuccess(httpServletRequest, httpServletResponse, authentication);
 
