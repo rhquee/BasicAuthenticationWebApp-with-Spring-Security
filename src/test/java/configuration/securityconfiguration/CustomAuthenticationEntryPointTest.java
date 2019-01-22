@@ -13,39 +13,14 @@ import static org.mockito.Mockito.when;
 
 public class CustomAuthenticationEntryPointTest {
 
-    HttpServletRequest httpServletRequest = mock(HttpServletRequest.class);
-    HttpServletResponse httpServletResponse = mock(HttpServletResponse.class);
-    AuthenticationException authenticationException = mock(AuthenticationException.class);
+    private HttpServletRequest httpServletRequest = mock(HttpServletRequest.class);
+    private HttpServletResponse httpServletResponse = mock(HttpServletResponse.class);
+    private AuthenticationException authenticationException = mock(AuthenticationException.class);
 
     @Test
-    public void commence_whenURIisHomeAndUserIsNotNull_thenRedirectToIndex() throws Exception {
+    public void commence_whenURIisHome_thenRedirectToLogin() throws Exception {
         //given
         when(httpServletRequest.getRequestURI()).thenReturn("/");
-        when(httpServletRequest.getAttribute("user")).thenReturn("Joe");
-        //when
-        CustomAuthenticationEntryPoint customAuthenticationEntryPoint = new CustomAuthenticationEntryPoint();
-        customAuthenticationEntryPoint.commence(httpServletRequest, httpServletResponse, authenticationException);
-        //then
-        verify(httpServletResponse).sendRedirect("index");
-    }
-
-    @Test
-    public void commence_whenURIisHomeAndUserIsNull_thenRedirectToLogin() throws Exception {
-        //given
-        when(httpServletRequest.getRequestURI()).thenReturn("/");
-        when(httpServletRequest.getAttribute("user")).thenReturn(null);
-        //when
-        CustomAuthenticationEntryPoint customAuthenticationEntryPoint = new CustomAuthenticationEntryPoint();
-        customAuthenticationEntryPoint.commence(httpServletRequest, httpServletResponse, authenticationException);
-        //then
-        verify(httpServletResponse).sendRedirect("login");
-    }
-
-    @Test
-    public void commence_whenURIisHomeAndUserIsEmpty_thenRedirectToLogin() throws Exception {
-        //given
-        when(httpServletRequest.getRequestURI()).thenReturn("/");
-        when(httpServletRequest.getAttribute("user")).thenReturn("");
         //when
         CustomAuthenticationEntryPoint customAuthenticationEntryPoint = new CustomAuthenticationEntryPoint();
         customAuthenticationEntryPoint.commence(httpServletRequest, httpServletResponse, authenticationException);

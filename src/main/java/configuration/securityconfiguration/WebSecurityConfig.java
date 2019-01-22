@@ -63,9 +63,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().and()
                 .sessionManagement()
                     .maximumSessions(1) //rozpoznawanie po loginie
-                    .maxSessionsPreventsLogin(false)
-                    .expiredUrl("/login") //true = niemożliwe jest zalogowanie się drugi raz
-                .sessionRegistry(sessionRegistry()); //referencja do tego obiektu (do: logowanie się drugi raz)
+                    .maxSessionsPreventsLogin(false) //true = niemożliwe jest zalogowanie się drugi raz
+                    .expiredUrl("/login")
+                    .sessionRegistry(sessionRegistry());
     }
 
     //mechanizm włączany w initializerze

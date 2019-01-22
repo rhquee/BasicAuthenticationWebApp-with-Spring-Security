@@ -10,9 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
-/**
- * Created by kfrak on 20.01.2019.
- */
 @Controller
 public class IndexController {
 
