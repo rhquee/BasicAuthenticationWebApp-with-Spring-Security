@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="utf-8">
 <head>
     <meta charset="UTF-8">
     <title>Strona główna - witaj </title>
@@ -8,13 +9,14 @@
     <body>
         <div class="container">
             <form class="form-signin" method="post" action="/logout">
+                <p class="text-head">Użytkownik: <span th:text="${user}" /></p>
                 <button class="button" type="submit" name="submitLogout">Wyloguj</button>
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             </form>
 
         </div>
 
-        <p>Użytkownik: <span th:text="${user}" /></p>
+
         <p>Current time is <span th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}" /></p>
 </body>
 </html>

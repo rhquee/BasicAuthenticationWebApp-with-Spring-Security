@@ -11,8 +11,7 @@ import java.security.Principal;
 public class AccessDeniedController {
 
         @GetMapping(value = "/403")
-        public String accesssDenied(Model model) {
-            model.addAttribute("msg", "You are not authorized to see this content");
+        public String accesssDenied() {
             return "403";
 
         }

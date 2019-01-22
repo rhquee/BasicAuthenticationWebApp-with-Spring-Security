@@ -7,14 +7,16 @@ body {
 
 .container{
     background-color: grey;
+    width: 100%;
 }
 
-.form-signin-heading {
+.text-head {
     font-weight: bold;
 }
 
 .form-control {
     font-weight: normal;
+
 }
 
 .form-signin {

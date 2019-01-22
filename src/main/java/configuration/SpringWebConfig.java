@@ -27,6 +27,7 @@ public class SpringWebConfig implements WebMvcConfigurer{
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
+        templateResolver.setCharacterEncoding("utf-8");
 
         return templateResolver;
     }
@@ -44,6 +45,7 @@ public class SpringWebConfig implements WebMvcConfigurer{
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setOrder(1);
+        viewResolver.setCharacterEncoding("utf-8");
         return viewResolver;
     }
 
@@ -54,10 +56,10 @@ public class SpringWebConfig implements WebMvcConfigurer{
         return messageSource;
     }
 
-//        @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/resources/static/**")
-//                .addResourceLocations("/resources/static");
-//    }
+        @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/css/**")
+                .addResourceLocations("/resources/static/css/");
+    }
 
 }
