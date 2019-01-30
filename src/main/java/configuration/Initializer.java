@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] {SpringRootConfig.class, WebSecurityConfig.class};
+        return new Class[] {WebSecurityConfig.class};
     }
 
     protected Class<?>[] getServletConfigClasses() {

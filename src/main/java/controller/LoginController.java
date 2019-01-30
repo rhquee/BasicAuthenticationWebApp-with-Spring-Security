@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
 
     @GetMapping(value = "/login")
-    private String showLoginPage(Model model, HttpServletRequest request) {
+    public String showLoginPage(Model model, HttpServletRequest request) {
 //        if(request.getAttribute("user") != null && request.getAttribute("user") != ""){
 //            model.addAttribute("user", request.getRemoteUser());
 //            return "index";

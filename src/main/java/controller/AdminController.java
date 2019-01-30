@@ -14,11 +14,11 @@ import java.util.Optional;
 public class AdminController {
 
     @GetMapping(value = {"/admin"})
-    private String showAdminPage(Model model, HttpServletRequest request){
+    public String showAdminPage(Model model){
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = authentication.getPrincipal();
-        String login = "unknown";
+        String login = "";
         if(principal instanceof UserDetails){
             login = ((UserDetails) principal).getUsername();
             System.out.println(login);

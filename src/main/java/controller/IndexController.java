@@ -13,8 +13,8 @@ import java.util.Date;
 @Controller
 public class IndexController {
 
-    @GetMapping(value = {"/", "/index", "index.html"})
-    private String showIndexPage(Model model, HttpServletRequest request){
+    @GetMapping(value = {"/", "/index"})
+    public String showIndexPage(Model model, HttpServletRequest request){
         model.addAttribute("user", request.getRemoteUser());
         return "index";
     }
