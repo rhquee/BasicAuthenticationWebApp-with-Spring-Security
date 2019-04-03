@@ -1,5 +1,6 @@
 package repository;
 
+import model.Role;
 import model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Repository;
@@ -11,19 +12,19 @@ import java.util.Set;
 @Repository
 public class RoleRepository{
 
-    private Set<String> adminRoles = defineAdminRoles();
-    private Set<String> userRoles = defineUserRoles();
+    public Set<Role> adminRoles = defineAdminRoles();
+    public Set<Role> userRoles = defineUserRoles();
 
-    private Set<String> defineAdminRoles() {
-        Set<String> definedAdminRoles = new HashSet<>();
-        definedAdminRoles.add("ADMIN_ROLE");
-        return definedAdminRoles;
+    private Set<Role> defineAdminRoles() {
+        Set<Role> defineUserRoles = new HashSet<>();
+        defineUserRoles.add(new Role("ADMIN_ROLE"));
+        return adminRoles;
     }
 
-    @PostConstruct
-    private Set<String> defineUserRoles() {
-        Set<String> defineUserRoles = new HashSet<>();
-        defineUserRoles.add("USER_ROLE");
+
+    private Set<Role> defineUserRoles() {
+        Set<Role> defineUserRoles = new HashSet<>();
+        defineUserRoles.add(new Role("USER_ROLE"));
         return defineUserRoles;
     }
 

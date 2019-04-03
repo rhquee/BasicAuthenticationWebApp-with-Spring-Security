@@ -22,8 +22,8 @@ public class UserRepository {
     @PostConstruct
     private Map<String, User> defineUserInRepository() {
         Map<String, User> usersMap = new HashMap<>();
-        usersMap.put("user", new User("User", "user", ));
-        usersMap.put("admin", new User("Admin", "admin", ));
+        usersMap.put("user", new User("User", "user", roleRepository.userRoles));
+        usersMap.put("admin", new User("Admin", "admin", roleRepository.adminRoles));
         return usersMap;
     }
 

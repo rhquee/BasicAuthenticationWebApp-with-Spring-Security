@@ -6,6 +6,10 @@ public class Role implements GrantedAuthority {
 
     private String name;
 
+    public Role(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
