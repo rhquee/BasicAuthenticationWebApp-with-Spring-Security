@@ -1,15 +1,17 @@
 package model;
 
+import java.util.Set;
+
 public class User {
 
     private String username;
     private String password;
-    private Role role;
+    private Set<Role> userRoles;
 
-    public User(String username, String password, Role role) {
+    public User(String username, String password, Set<Role> userRoles) {
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.userRoles = userRoles;
     }
 
     public String getUsername() {
@@ -28,11 +30,11 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    public Set<Role> getUserRoles() {
+        return userRoles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setUserRoles(Set<Role> userRoles) {
+        this.userRoles = userRoles;
     }
 }

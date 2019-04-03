@@ -2,22 +2,20 @@ package repository;
 
 import model.Role;
 import model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
-
-/**
- * Thinking of Java:
- * Zalecane rzutowanie kontenera na typ w górę (stosowanie ogólniejszego interfejsu)
- * w celu zostawienia furtki dla ewentualnej przyszłej zmiany implementacji, np.:
- * List<Apple> a = new ArrayList<Apple>(); możliwa zamiana na:
- * List<Apple> a = new LinkedList<Apple>();
- */
+import java.util.Set;
 
 @Repository
 public class UserRepository {
+
+    @Autowired
+    RoleRepository roleRepository;
 
     private Map<String, User> users = defineUserInRepository();
 
