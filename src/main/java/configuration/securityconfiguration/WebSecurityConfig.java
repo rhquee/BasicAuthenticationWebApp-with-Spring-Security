@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected UserDetailsService userDetailsService() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();
-        inMemoryUserDetailsManager.createUser(User.withUsername("joe").password(encoder.encode("joe")).roles("USER").build());
+        inMemoryUserDetailsManager.createUser(User.withUsername("user").password(encoder.encode("user")).roles("USER").build());
         inMemoryUserDetailsManager.createUser(User.withUsername("admin").password(encoder.encode("admin")).roles("ADMIN").build());
         return inMemoryUserDetailsManager;
     }
